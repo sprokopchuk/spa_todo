@@ -3,13 +3,14 @@ require 'rails_helper'
 RSpec.describe ProjectsController, type: :controller do
   let(:user) {FactoryGirl.create :user}
   let(:project) {FactoryGirl.create :project, user: user}
-  let(:ability) {Ability.new(user)}
 
   before do
     request.env["devise.mapping"] = Devise.mappings[:user]
     sign_in user
-    allow(controller).to receive(:current_ability).and_return ability
-    ability.can :manage, Project
+    @ability = Object.new
+    @ability.extend(CanCan::Ability)
+    allow(controller).to receive(:current_ability).and_return @ability
+    @ability.can :manage, Project
   end
   describe "GET #index" do
 
@@ -29,7 +30,7 @@ RSpec.describe ProjectsController, type: :controller do
 
     context "cancan doesn't allow :index" do
       before do
-        ability.cannot :read, Project
+        @ability.cannot :read, Project
         get :index, format: :json
       end
       it {expect(response).to be_forbidden}
@@ -75,7 +76,7 @@ RSpec.describe ProjectsController, type: :controller do
 
     context "cancan doesn't allow :create" do
       before do
-        ability.cannot :create, Project
+        @ability.cannot :create, Project
         post :create, format: :json, project: project_params
       end
       it {expect(response).to be_forbidden}
@@ -122,7 +123,7 @@ RSpec.describe ProjectsController, type: :controller do
 
     context "cancan doesn't allow :update" do
       before do
-        ability.cannot :update, Project
+        @ability.cannot :update, Project
         post :update, id: project.id, project: project_params, format: :json
       end
       it {expect(response).to be_forbidden}
@@ -139,7 +140,7 @@ RSpec.describe ProjectsController, type: :controller do
 
     context "cancan doesn't allow :destroy" do
       before do
-        ability.cannot :destroy, Project
+        @ability.cannot :destroy, Project
         delete :destroy, id: project.id, format: :json
       end
       it {expect(response).to be_forbidden}
