@@ -1,15 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe ProjectsController, type: :controller do
-  let(:user) {FactoryGirl.create :user}
-  let(:project) {FactoryGirl.create :project, user: user}
+
+  let(:user) {FactoryGirl.build_stubbed :user}
+  let(:project) {FactoryGirl.build_stubbed :project, user: user}
 
   before do
-    request.env["devise.mapping"] = Devise.mappings[:user]
-    sign_in user
-    @ability = Object.new
-    @ability.extend(CanCan::Ability)
-    allow(controller).to receive(:current_ability).and_return @ability
+    setup user
     @ability.can :manage, Project
   end
   describe "GET #index" do
@@ -20,7 +17,7 @@ RSpec.describe ProjectsController, type: :controller do
 
     it "assigns all projects as @projects" do
       get :index, format: :json
-      expect(assigns(:projects)).not_to be_nil
+      expect(assigns(:projects)).to eq([project])
     end
 
     it "render @projects in json format" do
@@ -88,9 +85,9 @@ RSpec.describe ProjectsController, type: :controller do
   describe "PUT #update" do
     let(:project_params) {FactoryGirl.attributes_for :project}
 
-
     before do
       allow(Project).to receive(:find).and_return project
+      allow(project).to receive(:update).and_return true
     end
 
     context "with valid params" do
@@ -133,7 +130,12 @@ RSpec.describe ProjectsController, type: :controller do
 
   describe "DELETE #destroy" do
 
+    before do
+      allow(Project).to receive(:find).and_return project
+    end
+
     it "return status :no_content" do
+      allow(project).to receive(:destroy).and_return true
       delete :destroy, :id => project.id, format: :json
       expect(response.status).to eq(204)
     end
