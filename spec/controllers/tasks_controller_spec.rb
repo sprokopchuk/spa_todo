@@ -7,8 +7,7 @@ RSpec.describe TasksController, type: :controller do
   let(:task) {FactoryGirl.build_stubbed :task, project: project}
   before do
     setup user
-    @ability.can :manage, Project
-    @ability.can :manage, Task
+    @ability.can :manage, :all
     allow(Project).to receive(:find).and_return project
   end
 
