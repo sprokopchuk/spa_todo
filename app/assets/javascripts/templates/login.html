@@ -1,0 +1,36 @@
+<div  class="mainbox col-md-7 col-md-offset-3 col-sm-8 col-sm-offset-2">
+  <div class="alert alert-danger" role="alert" ng-show="error">
+    {{error}}
+  </div>
+  <div class="panel panel-info">
+    <div class="panel-heading" style="padding: 5px 5px 0 5px">
+        <ul class="nav nav-tabs">
+          <li class="active"><a  ui-sref="login">Login</a></li>
+          <li><a  ui-sref="register">Register</a></li>
+        </ul>
+    </div>
+    <div class="panel-body" style="padding-top:30px">
+      <form id="loginform" ng-submit="handleLoginBtnClick()" ng-init="loginForm = {}">
+        <div class="form-group" style="padding: 0 10px">
+          <label for="inputEmail">Email</label>
+          <div style="margin-bottom: 20px" class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Enter email" ng-model="loginForm.email">
+          </div>
+       </div>
+       <div class="form-group" style="padding: 0 10px">
+          <label for="inputPassword">Password</label>
+          <div style="margin-bottom: 20px" class="input-group field">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="loginForm.password">
+          </div>
+
+          <div class="actions">
+            <input type="submit" class="btn btn-success" value="Log In" />
+            <a href="#" id="btn-fblogin" ng-click="authenticate('facebook')" class="btn btn-primary">Login with Facebook</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

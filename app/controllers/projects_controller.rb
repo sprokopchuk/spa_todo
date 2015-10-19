@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-  load_resource
+  load_and_authorize_resource
 
   def index
     render json: @projects

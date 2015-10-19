@@ -11,11 +11,10 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'aws-sdk', '~> 1.36.1'
 gem "fog"
-gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'bootstrap-sass', '~> 3.3.5'
-#gem 'sprockets', '2.12.3'
-#gem 'angularjs-rails', '1.3.14'
+gem 'devise_token_auth'
+gem 'angular_rails_csrf'
 gem 'angular-rails-templates', '0.2.0'
 gem 'bower-rails'
 gem 'sass-rails', '~> 5.0'
@@ -44,6 +43,7 @@ end
 
 group :test do
   gem 'selenium-webdriver'
+  gem "capybara-webkit"
   gem 'capybara'
   gem 'launchy'
   gem 'faker'

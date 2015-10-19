@@ -1,0 +1,13 @@
+<body ng-app="spaTodo">
+  <div class="container">
+    <div class="row">
+      <h1>Simple TODO</h1>
+      <div class="alert alert-danger col-md-7" role="alert" ng-show="error">
+        {{ error }}
+      </div>
+      <div class="col-md-7" ui-view>
+
+      </div>
+    </div>
+  </div>
+</body>

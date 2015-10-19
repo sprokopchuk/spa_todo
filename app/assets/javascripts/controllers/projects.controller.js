@@ -1,4 +1,4 @@
-angular.module('spaTodo')
+angular.module('spaTodo.controllers')
   .controller('ProjectsCtlr', function($scope, ProjectFactory){
     this.newProject = {name: null},
     this.addProject = function(){

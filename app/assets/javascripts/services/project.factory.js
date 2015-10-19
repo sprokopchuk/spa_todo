@@ -1,4 +1,4 @@
-angular.module('spaTodo').factory('ProjectFactory', function(Restangular){
+angular.module('spaTodo.services').factory('ProjectFactory', function(Restangular){
   allProjects = function(){
     return Restangular.all('projects').getList();
   },

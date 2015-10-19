@@ -1,0 +1,38 @@
+<div  class="mainbox col-md-7 col-md-offset-3 col-sm-8 col-sm-offset-2">
+  <div class="panel panel-info">
+    <div class="panel-heading" style="padding: 5px 5px 0 5px">
+        <ul class="nav nav-tabs">
+          <li><a  ui-sref="login">Login</a></li>
+          <li class="active"><a  ui-sref="register">Register</a></li>
+        </ul>
+    </div>
+    <div class="panel-body" style="padding-top:30px">
+      <form id="registrationform" ng-submit="handleRegBtnClick()" ng-init="registrationForm = {}">
+        <div class="form-group" style="padding: 0 10px">
+          <label for="inputEmail">Email</label>
+          <div style="margin-bottom: 20px" class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Enter email" ng-model="registrationForm.email">
+          </div>
+       </div>
+       <div class="form-group" style="padding: 0 10px">
+          <label for="inputPassword">Password</label>
+          <div style="margin-bottom: 20px" class="input-group field">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="registrationForm.password">
+          </div>
+
+          <label for="inputPasswordConfirmation">Password confirmation</label>
+          <div style="margin-bottom: 20px" class="input-group field">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+            <input type="password" class="form-control" id="inputPasswordConfirmation" placeholder="Password confirmation" ng-model="registrationForm.password_confirmation">
+          </div>
+          <div class="actions">
+            <input type="submit" class="btn btn-success" value="Register" />
+            <a id="btn-fblogin" ng-click="authenticate('facebook')" class="btn btn-primary">Register with Facebook</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
