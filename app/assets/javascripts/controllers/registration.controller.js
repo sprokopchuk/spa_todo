@@ -8,12 +8,10 @@ ctrls.controller('registrationCtrl', ['$scope', '$auth', '$location',
       $scope.handleRegBtnClick = function() {
         $auth.submitRegistration($scope.registrationForm)
           .then(function(resp) {
-              console.log(resp);
             $auth.submitLogin({
               email: $scope.registrationForm.email,
               password: $scope.registrationForm.password
             }).then(function(resp){
-              console.log(resp);
             });
           });
       };

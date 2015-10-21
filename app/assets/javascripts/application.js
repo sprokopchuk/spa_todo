@@ -16,6 +16,7 @@
 //= require angular
 //= require angular-ui-router
 //= require angular-cookie
+//= require angular-xeditable
 //= require ng-token-auth
 //= require angular-rails-templates
 //= require lodash

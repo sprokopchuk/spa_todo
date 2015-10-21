@@ -1,0 +1,9 @@
+<div ng-controller="ProjectsCtlr as ctlr" class="col-md-12">
+  <form class="form-inline" ng-init="newProject">
+    <div class="form-group" style="text-align: center">
+      <span class="glyphicon glyphicon-plus"></span>
+      <input type="text" class="form-control" id="nameProject" placeholder="Description of the project" ng-model="newProject.name" required>
+      <button type="submit" class="btn btn-primary" ui-sref="projects.add_project" ng-click="ctlr.addProject(newProject)"> Add project </button>
+    </div>
+  </form>
+</div>

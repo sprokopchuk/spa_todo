@@ -1,0 +1,7 @@
+asset 'angular'
+asset 'angular-ui-router'
+asset 'angular-cookie'
+asset 'restangular'
+asset 'angular-mocks'
+asset 'ng-token-auth'
+asset 'angular-xeditable'

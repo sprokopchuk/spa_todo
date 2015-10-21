@@ -1,9 +1,15 @@
 angular.module('spaTodo.controllers')
   .controller('ProjectsCtlr', function($scope, ProjectFactory){
-    this.newProject = {name: null},
-    this.addProject = function(){
-      ProjectFactory.addProject(this.newProject);
-    },
+    var self = this;
+    self.addProject = function(project){
+      ProjectFactory.addProject(project).then(function(newProject){
+        self.projects.push(newProject);
+      });
+    }
+    self.projects = ProjectFactory.projects.$object;
 
-    this.allProjects = function(){}
+    self.removeProject = function(project){
+      project.remove();
+      self.projects = _.without(self.projects, project);
+    }
 });

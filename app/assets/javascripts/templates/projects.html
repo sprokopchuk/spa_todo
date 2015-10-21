@@ -18,3 +18,32 @@
     </li>
   </ul>
 </div>
+<div class="col-md-12" style="margin-top: 15px;">
+  <div ui-view="new_project" class="col-md-12">
+    <button class="btn btn-primary center-block" ui-sref="projects.new_project">
+      <span class="glyphicon glyphicon-plus">&nbsp;Add TODO List
+    </button>
+  </div>
+</div>
+<div class="col-md-12" ng-controller="ProjectsCtlr as ctlr">
+  <div ng-repeat="project in ctlr.projects">
+    <div class="panel panel-primary" ng-hide="projects.length==0">
+      <div class="panel-heading">
+        <div class="pull-left calendar glyphicon glyphicon-calendar"></div>
+          <div class="pull-left" editable-text="project.name" onaftersave="project.put()" e-form="projectForm">{{ project.name }}</div>
+          <div class="pull-right">
+            <a href="#" class="pencil" id="editProject_{{project.id}}" ng-click="projectForm.$show()" ng-hide="projectForm.$visible">
+              <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+            <a href="#" class="trash" id="deleteProject_{{project.id}}" ng-click="ctlr.removeProject(project)">
+              <span class="glyphicon glyphicon-trash"></span>
+            </a>
+          </div>
+          <div class="clear"></div>
+      </div>
+      <div class="panel-body">
+      </div>
+    </div>
+
+  </div>
+</div>
