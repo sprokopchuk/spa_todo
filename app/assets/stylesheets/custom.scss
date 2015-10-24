@@ -23,6 +23,14 @@ h1 {
   color: #d42e15;
   vertical-align: middle;
  }
+.input-group-addon.clock {
+  color: rgb(255, 255, 255);
+  background-color: rgb(217, 83, 79);
+  border-color: rgb(212, 63, 58);
+ }
+.form-control.clock {
+   color: #DB2323;
+}
 .pencil {
   color: #d4ca15;
   vertical-align: middle;
@@ -69,12 +77,11 @@ h1 {
 .error {
   border-color: red;
  }
-.panel-heading .form-inline {margin: 0px;}
-.panel-heading .form-inline .form-control { width: 75%;}
-
-.form-inline input[name*=deadline] {
-  width: 35%;
+.panel-heading .form-inline, .panel-heading .form-control {
+  margin: 0px;
+  width: 70% !important;
 }
+.panel-body .form-inline .form-control { width: 80%;}
 
 #error_explanation {
   color: red;
@@ -95,7 +102,7 @@ h1 {
   }
 }
 .action-button{
-  visibility: hidden;
+  margin-left: 8px;
   width: 15%;
 }
 
@@ -130,7 +137,7 @@ h1 {
   background-color: #c67605;
 }
 .deadline{
-  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .alert-error {

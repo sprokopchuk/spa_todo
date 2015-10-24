@@ -9,7 +9,9 @@ angular.module('spaTodo.controllers')
     self.projects = ProjectFactory.projects.$object;
 
     self.removeProject = function(project){
-      project.remove();
-      self.projects = _.without(self.projects, project);
+      project.remove().then(function(){
+        _.remove(self.projects, project);
+      });
     }
+
 });

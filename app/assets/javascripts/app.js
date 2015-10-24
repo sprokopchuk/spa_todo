@@ -7,7 +7,8 @@ angular.module('spaTodo',
   'restangular',
   'spaTodo.controllers',
   'ng-token-auth',
-  'xeditable'])
+  'xeditable',
+  'ui.date'])
   .config(function($stateProvider, $urlRouterProvider, RestangularProvider, $authProvider){
     $authProvider.configure({
       apiUrl: ''
@@ -15,10 +16,6 @@ angular.module('spaTodo',
     RestangularProvider.setBaseUrl("/");
     $urlRouterProvider.otherwise('/login');
     $stateProvider
-      .state('index', {
-        url: "/index",
-        templateUrl: "index.html"
-      })
       .state('login', {
         url: "/login",
         controller: "sessionCtrl",
@@ -46,26 +43,11 @@ angular.module('spaTodo',
         }
       })
       .state('projects', {
-        url: "/projects",
+        url: "/",
         templateUrl: "projects.html",
         resolve: {
           auth: function($auth) {
             return $auth.validateUser();
-          }
-        }
-      })
-      .state('projects.new_project', {
-        views: {
-          'new_project': {
-            templateUrl: "_new_project.html",
-            controller: "ProjectsCtlr"
-          }
-        }
-      })
-      .state('projects.add_project', {
-        views: {
-          'new_project': {
-            templateUrl: "_add_project.html"
           }
         }
       });
@@ -73,7 +55,7 @@ angular.module('spaTodo',
   .run(['$rootScope', '$auth', '$state','editableOptions','editableThemes', function($rootScope, $auth, $state, editableOptions, editableThemes) {
     editableThemes.bs3.inputClass = 'input-sm';
     editableThemes.bs3.buttonsClass = 'btn-sm';
-    editableThemes.bs3.formTpl = '<form class="form-inline editable-wrap pull-left col-md-10" role="form"></form>';
+    editableThemes.bs3.formTpl = '<form class="form-inline editable-wrap pull-left" role="form"></form>';
     editableThemes.bs3.submitTpl = '<button type="submit" class="btn btn-success"><span></span></button>',
     editableOptions.theme = 'bs3';
     $rootScope.$on('auth:login-success', function() {

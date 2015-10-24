@@ -7,6 +7,8 @@
     "restangular": "latest",
     "angular-mocks": "latest",
     "ng-token-auth": "latest",
-    "angular-xeditable": "latest"
+    "angular-xeditable": "latest",
+    "angular-ui-date": "latest",
+    "angular-ui-sortable": "latest"
   }
 }

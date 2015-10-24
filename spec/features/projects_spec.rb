@@ -6,7 +6,7 @@ feature 'Projects managment', js: true do
 
   background do
     login user
-    visit "/#/projects"
+    visit "/#/"
   end
 
   scenario 'adding the project' do
@@ -21,7 +21,7 @@ feature 'Projects managment', js: true do
     expect(page).not_to have_content(project.name)
   end
 
-  scenario 'update name of project' do
+  scenario 'edit name of project' do
     click_link "editProject_#{project.id}"
     first(:xpath, '//input[@type="text"]').set "My project"
     first(:xpath, '//button[@type="submit"]').click

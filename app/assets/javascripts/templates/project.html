@@ -1,0 +1,13 @@
+<div ng-controller="ProjectsCtlr as ctlr">
+  <div class="pull-left calendar glyphicon glyphicon-calendar"></div>
+  <div class="pull-left" editable-text="project.name" onaftersave="project.put()" e-form="projectForm">{{ project.name }}</div>
+  <div class="pull-right">
+    <a href="" class="pencil" id="editProject_{{project.id}}" ng-click="projectForm.$show()" ng-hide="projectForm.$visible">
+      <span class="glyphicon glyphicon-pencil"></span>
+    </a>
+    <a href="" class="trash" id="deleteProject_{{project.id}}" ng-click="ctlr.removeProject(project)">
+      <span class="glyphicon glyphicon-trash"></span>
+    </a>
+  </div>
+  <div class="clear"></div>
+</div>

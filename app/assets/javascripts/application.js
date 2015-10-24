@@ -13,8 +13,10 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require jquery-ui
 //= require angular
 //= require angular-ui-router
+//= require angular-ui-date
 //= require angular-cookie
 //= require angular-xeditable
 //= require ng-token-auth
