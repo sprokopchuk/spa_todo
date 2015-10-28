@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-ruby "2.2.1"
+ruby "2.2.3"
 gem 'rails', '4.2.3'
 gem 'pg'
 gem 'devise'
@@ -34,7 +34,7 @@ gem 'rails_12factor', group: :production
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
+  gem 'poltergeist'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   gem 'rspec-rails'

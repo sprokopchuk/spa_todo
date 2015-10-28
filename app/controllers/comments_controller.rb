@@ -3,6 +3,10 @@ class CommentsController < ApplicationController
   load_and_authorize_resource :task
   load_and_authorize_resource :through => :task
 
+  def index
+    render json: @comments
+  end
+
   def create
     if @comment.save
       render template: :show, json: @comment, status: :created
@@ -25,13 +29,13 @@ class CommentsController < ApplicationController
   end
 
   def attach_file
-    if @comment.update(:attachment => params[:file])
-      render json: @comment.attachment, status: :ok
+    if @comment.update(attachment: params[:comment][:attachment])
+      render json: @comment, status: :ok
     end
   end
 
   private
     def comment_params
-      params.require(:comment).permit(:body, :attachment)
+      params.require(:comment).permit(:id, :body, :attachment, :task_id)
     end
 end

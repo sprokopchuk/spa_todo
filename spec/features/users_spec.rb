@@ -2,17 +2,16 @@ require 'rails_helper'
 
 feature 'User authentication', js: true do
 
-  given!(:user) {FactoryGirl.create :user}
+  given(:user) {FactoryGirl.create :user}
 
   scenario 'log in' do
     visit "/#/login"
     within "#loginform" do
       fill_in "Email", with: user.email
       fill_in "Password", with: user.password
-      click_button "Log In"
+      find_button("Log In").click
     end
-    click_button "Welcome, User!"
-    expect(page).to have_link("Log Out!")
+    expect(page).to have_button("Log Out!")
   end
 
   scenario 'register' do
@@ -21,17 +20,14 @@ feature 'User authentication', js: true do
       fill_in "Email", with: Faker::Internet.email
       fill_in "Password", with: user.password
       fill_in "Password confirmation", with: user.password
-      click_button "Register"
+      find_button("Register").click
     end
-    click_button "Welcome, User!"
-    expect(page).to have_link("Log Out!")
+    expect(page).to have_button("Log Out!")
   end
 
   scenario 'log out' do
     login user
-    visit "/#/projects"
-    click_button "Welcome, User!"
-    click_link "Log Out!"
+    find_button("Log Out!").click
     expect(page).to have_button "Log In"
   end
 
@@ -43,8 +39,7 @@ feature 'User authentication', js: true do
     end
     scenario 'log in' do
       click_link "Login with Facebook"
-      click_button "Welcome, User!"
-      expect(page).to have_link("Log Out!")
+      expect(page).to have_button("Log Out!")
     end
   end
 

@@ -9,6 +9,6 @@
     "ng-token-auth": "latest",
     "angular-xeditable": "latest",
     "angular-ui-date": "latest",
-    "angular-ui-sortable": "latest"
+    "ng-file-upload": "latest"
   }
 }

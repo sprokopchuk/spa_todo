@@ -1,0 +1,39 @@
+<div ng-controller="CommentsCtlr as ctlrComment">
+  <div class="well comments"  ng-show="showCommentInput" ng-hide="!task.comments.length">
+    <form class="comment-form" ng-submit="ctlrComment.addComment(newComment, task)" ng-init="newComment">
+      <div class="input-group">
+        <input type="text" name="comment" class="form-control input-sm" ng-model="newComment.body" placeholder="Write your message here..."  required>
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-primary btn-sm">
+            <span class="glyphicon glyphicon-comment"></span> Add Comment
+          </button>
+        </span>
+      </div>
+    </form>
+    <ul class="list-unstyled" style="margin-top: 8px;">
+      <li class="list-group-item" ng-repeat="comment in task.comments">
+        <a href="" ng-click="ctlrComment.removeComment(comment, task)" class="pull-right trash comment">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
+        <div class="button pull-right text-primary" ng-model="commentFile" ngf-select="ctlrComment.attachFile($file, comment)">
+          <span class="glyphicon glyphicon-open"></span>
+        </div>
+        {{comment.body}}
+        <ul class="list-unstyled">
+          <li ng-hide="isUndefined(comment.attachment_filename)">
+            <span class="progress" ng-show="commentFile.progress >= 0">
+              <div style="width:100%" ng-bind="commentFile.progress + '%'" class="ng-binding">
+                100%
+              </div>
+            </span>
+            <a ng-href="{{comment.attachment_url}}" class="pull-left text-success">
+              {{comment.attachment_filename}}
+            </a>
+          </li>
+        </ul>
+        <div class="clear"></div>
+      </li>
+      </br>
+    </ul>
+  </div>
+</div>

@@ -1,19 +1,25 @@
 <div class="checkbox" ng-controller="TasksCtlr as ctlrTask">
   <input type="checkbox" ng-model="task.done" value="{{task.done}}" ng-change="ctlrTask.updateTask(task)">
   <label>
-    <div editable-text="task.name" onaftersave="ctlrTask.updateTask(task)" e-form="taskForm">{{ task.name }}</div>
+    <div editable-text="task.name" onaftersave="ctlrTask.updateTask(task)" e-form="taskForm">
+      {{ task.name }}
+    </div>
   </label>
-
   <div class="pull-right action-button">
+    <a href="" class="comment" ng-click="showCommentInput = true">
+      <span class="glyphicon glyphicon-comment"></span>
+    </a>
     <a href="" class="pencil" ng-click="taskForm.$show()" id="editTask_{{task.id}}">
       <span class="glyphicon glyphicon-pencil"></span>
     </a>
     <a href="" class="trash" ng-click="ctlrTask.removeTask(task, project)">
       <span class="glyphicon glyphicon-trash"></span>
     </a>
+
   </div>
-  <div class="input-group col-md-3 pull-right input-group-sm">
+  <div class="input-group pull-right col-sm-3">
     <span class="input-group-addon clock"><i class="glyphicon glyphicon-time"></i></span>
-    <input class="form-control clock" type="text" ui-date ng-change="ctlrTask.updateTask(task)" ng-model="task.deadline" placeholder="Deadline" readonly>
+    <input class="form-control clock input-sm" type="text" ui-date ng-change="ctlrTask.updateTask(task)" ng-model="task.deadline" placeholder="Deadline" readonly>
   </div>
+  <div ng-include="'comments.html'" onload="task">
 </div>

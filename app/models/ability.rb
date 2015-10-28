@@ -6,7 +6,7 @@ class Ability
     if user
       can [:read, :create, :destroy, :update], Project, :user_id => user.id
       can [:read, :create, :destroy, :update], Task, :project => { user_id: user.id }
-      can [:read, :create, :destroy, :update], Comment, :task => {project: {user_id: user.id }}
+      can [:read, :create, :destroy, :update, :attach_file], Comment, :task => {project: {user_id: user.id }}
     end
   end
 end

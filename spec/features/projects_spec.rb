@@ -6,7 +6,6 @@ feature 'Projects managment', js: true do
 
   background do
     login user
-    visit "/#/"
   end
 
   scenario 'adding the project' do
@@ -23,8 +22,10 @@ feature 'Projects managment', js: true do
 
   scenario 'edit name of project' do
     click_link "editProject_#{project.id}"
-    first(:xpath, '//input[@type="text"]').set "My project"
-    first(:xpath, '//button[@type="submit"]').click
+    within "div.editable-controls" do
+      find("input.editable-input").set 'My project'
+      find("button.btn-success").click
+    end
     expect(page).to have_content "My project"
   end
 

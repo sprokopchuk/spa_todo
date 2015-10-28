@@ -23,11 +23,13 @@ h1 {
   color: #d42e15;
   vertical-align: middle;
  }
+
 .input-group-addon.clock {
   color: rgb(255, 255, 255);
   background-color: rgb(217, 83, 79);
   border-color: rgb(212, 63, 58);
  }
+
 .form-control.clock {
    color: #DB2323;
 }
@@ -102,8 +104,7 @@ h1 {
   }
 }
 .action-button{
-  margin-left: 8px;
-  width: 15%;
+  margin-left: 15px;
 }
 
 .glyphicon-chevron-up, .glyphicon-chevron-down {
@@ -170,7 +171,11 @@ h1 {
   background-color: white !important;
 }
 
-.col-centered{
-    float: none;
-    margin: 0 auto;
+.comments {
+  margin-top: 18px;
+  padding: 10px;
+  margin-bottom: 0;
+}
+.comment-form{
+  margin: 0 !important;
 }

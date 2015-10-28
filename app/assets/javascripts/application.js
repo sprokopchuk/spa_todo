@@ -19,6 +19,7 @@
 //= require angular-ui-date
 //= require angular-cookie
 //= require angular-xeditable
+//= require ng-file-upload
 //= require ng-token-auth
 //= require angular-rails-templates
 //= require lodash

@@ -7,7 +7,6 @@ feature 'Tasks managment', js: true do
 
   background do
     login user
-    visit "/#/"
   end
 
   scenario 'adding task' do
