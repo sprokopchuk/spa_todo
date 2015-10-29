@@ -20,7 +20,6 @@ feature 'Comments managment', js: true do
   end
 
   scenario 'delete comment' do
-
     find("a.trash.comment").click
     expect(page).not_to have_content(comment.body)
   end

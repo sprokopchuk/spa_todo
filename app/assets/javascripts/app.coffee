@@ -17,20 +17,10 @@ angular.module('spaTodo', [
     url: '/login'
     controller: 'sessionCtrl'
     templateUrl: 'login.html'
-    resolve: auth: ($auth, $state) ->
-      $auth.validateUser().then ->
-        $state.go 'projects'
-        return
-      return
   ).state('register',
     url: '/register'
     controller: 'registrationCtrl'
     templateUrl: 'register.html'
-    resolve: auth: ($auth, $state) ->
-      $auth.validateUser().then ->
-        $state.go 'projects'
-        return
-      return
   ).state 'projects',
     url: '/'
     templateUrl: 'projects.html'
@@ -44,6 +34,7 @@ angular.module('spaTodo', [
   'editableOptions'
   'editableThemes'
   ($rootScope, $auth, $state, editableOptions, editableThemes) ->
+    $auth.validateUser().then(-> $state.go 'projects')
     editableThemes.bs3.inputClass = 'input-sm'
     editableThemes.bs3.buttonsClass = 'btn-sm'
     editableThemes.bs3.formTpl = '<form class="form-inline editable-wrap pull-left" role="form"></form>'
