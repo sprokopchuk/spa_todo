@@ -34,6 +34,6 @@ AngularJS, jQuery.
   acceptance/functional tests ­ RSpec + Capybara).
   * It look like below.
 
- ![ScreenShot](https://raw.github.com/sprokopchuk/task_manager/master/public/uploads/screenshot.png)
+ ![ScreenShot](https://raw.github.com/sprokopchuk/spa_todo/master/public/uploads/screenshot.png)
 
 
