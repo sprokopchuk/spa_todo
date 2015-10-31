@@ -43,9 +43,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'poltergeist'
   gem 'selenium-webdriver'
-  gem "capybara-webkit"
   gem 'capybara'
   gem 'launchy'
   gem 'faker'
